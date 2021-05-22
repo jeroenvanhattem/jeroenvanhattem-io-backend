@@ -23,7 +23,7 @@ router.post('/project', auth, async (request, response) => {
 // GET /projects?completed=false
 // GET /projects?limit=10&skip=10
 // GET /projects?sortBy=createdAt:desc
-router.get('/projects', auth, async (request, response) => {
+router.get('/projects', async (request, response) => {
   const match = {}
   const sort = {}
 
@@ -39,14 +39,15 @@ router.get('/projects', auth, async (request, response) => {
 
   try {
     const projects = await Project.find()
-    response.send(request.user.projects)
+    console.log(projects)
+    response.send(projects)
   } catch (error) {
     response.status(500).send('Error ' + error)
   }
 })
 
 // Read an individual project
-router.get('/projects/:id', auth, async (request, response) => {
+router.get('/projects/:id', async (request, response) => {
   // Project id
   const _id = request.params.id
   try {

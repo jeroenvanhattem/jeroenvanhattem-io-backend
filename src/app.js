@@ -1,6 +1,6 @@
 const express = require('express')
 require('./database/database')
-const projectRouter = require('./routers/project')
+const projectRouter = require('./routers/projects')
 const userRouter = require('./routers/user')
 const cors = require('cors')
 
